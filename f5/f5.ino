@@ -21,10 +21,10 @@ void loop() {
   { // goes from 180 degrees to 0 degrees
     myservo1.write(pos2);
     // tell servo to go to position in variable 'pos'
-        a0=analogRead(A0);
-     a1=analogRead(A1);
-      b0=analogRead(A2);
-       b1=analogRead(A3);
+        a0=analogRead(A0)+5;
+     a1=analogRead(A1)-5;
+      b0=analogRead(A2)-5;
+       b1=analogRead(A3)+5;
        Serial.print(a0);
        Serial.print(',');
           Serial.print(a1);
@@ -38,7 +38,7 @@ void loop() {
 //    myservo1.write(pos);
 //      myservo2.write(pos);
 //      // tell servo to go to position in variable 'pos'
-//    
+//     
 //    a0=analogRead(A0);
 //     a1=analogRead(A1);
 //      b0=analogRead(A2);
