@@ -5,7 +5,7 @@ import os
 import time
 
 class ard(object):
-    self.ser=serial.Serial('/dev/ttyUSB0', 9600)
+    # self.ser=serial.Serial('/dev/ttyUSB0', 9600)
 
     def __init__(self):
         self.ser=serial.Serial('/dev/ttyUSB0', 9600)
