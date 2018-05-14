@@ -5,9 +5,9 @@ import time
 import csv
 ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 try:
-	ser.open()
+    ser.open()
 except:
-	pass
+    pass
 try:
     ser.write('q'.encode())
     # print(ser.readlines())
