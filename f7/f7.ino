@@ -2,6 +2,8 @@
 void readlight();
 void findmaxq();
 void saomiao();
+void sf();
+void showlight();
 void setup()
 {
     // 初始化舵机和串口
@@ -23,6 +25,10 @@ void loop()
             case 'f':
                 findmaxq();
                 break;
+            case 'q':
+                sf();
+            case 'l':
+                showlight();
             default:
                 Serial.println("bad com");
                 break;
@@ -74,7 +80,7 @@ void findmaxq()
     int j=90;
     s0.write(i);
     s1.write(j);
-    for(int ip = 0; ip <= 4096; i++)
+    for(int ip = 0; ip <= 4096; ip++)
     {
         readlight();
         delay(2);
@@ -91,22 +97,27 @@ void findmaxq()
                 flog1=1;
             }
         }
-        if (a0<=(a1-3))
+        if (a0<(a1-3))
         {
             // i--;
             if (i>=1)
             {
                 i--;
+                Serial.print("*");
             } 
             else
             {
                 flog1=1;
             }
         }
-        if (a0<=a1+3&&a0>=a1-3)
+        if ((a0<=(a1+3))&&(a0>=(a1-3)))
         {
             flog1=1;
         }
+        Serial.print(i);
+        Serial.print(',');
+        Serial.print(flog1);
+        Serial.print(',');
         s0.write(i);
         if (b0>(b1+3))
         {
@@ -136,6 +147,9 @@ void findmaxq()
         {
             flog2=1;
         }
+        Serial.print(flog2);
+        Serial.print(',');
+        Serial.println(j);
         s1.write(j);
         if (flog1==1&&flog2==1)
         {
@@ -147,5 +161,53 @@ void findmaxq()
         }
     }
 }
-
-
+void sf()
+{
+    // 光强极大值扫描函数
+    float l,ml;
+    int i,j;
+    int mx,my;
+    ml=100000;
+    mx=0;
+    my=0;
+    for( i = 0; i <= 180; i=i+10)
+    {
+        
+        for( j = 0; j < 180; j=j+10)
+        {
+            delay(10);
+            s0.write(i);
+            delay(10);
+            s1.write(j);
+            delay(100);
+            readlight();
+            l=(a0+a1+b0+b1);
+            // Serial.print(l,2);
+            // Serial.print(',');
+            if (ml>=l)
+            {
+                ml=l;
+                mx=i;
+                my=j;
+            }
+        }
+        // Serial.print('\n');
+        delay(10);
+    }
+    delay(1000);
+    s0.write(mx);
+    s1.write(my);
+    delay(20);
+    Serial.println('p');
+    
+    
+}
+void showlight()
+{
+    float l;
+    readlight();
+    delay(10);
+    l=a0+a1+b0+b1;
+    Serial.println(l);
+    delay(2);
+}
