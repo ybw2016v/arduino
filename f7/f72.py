@@ -1,9 +1,14 @@
-
+#!/usr/bin/env python3
 import serial
-
-ser = serial.Serial('/dev/ttyUSB0',9600, timeout=1)
-ser.write('q'.encode())
-# ser.flushInput()
-# time.sleep(5)
-# shi = str(ser.readline())
-# shi=shi[2:len(shi)-5]
+import os
+import time
+import csv
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+try:
+	ser.open()
+except:
+	pass
+try:
+    ser.write('q'.encode())
+    # print(ser.readlines())
+    ser.flushInput()
