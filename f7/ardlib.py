@@ -9,6 +9,7 @@ class ard(object):
 
     def __init__(self):
         self.ser=serial.Serial('/dev/ttyUSB0', 9600)
+        time.sleep(1)
         sser=self.ser
         # sser.open()
         try:
@@ -32,8 +33,9 @@ class ard(object):
         pass
     def qfm(self):
         sser=self.ser
+        time.sleep(1)
         sser.write(b'q')
-        sser.flushInput()
+        # sser.flushInput()
         print("dog")
         # time.sleep(5)
         shi = str(sser.readline())
