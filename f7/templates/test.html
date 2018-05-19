@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<form>
+    First name: <input type="text" name="firstname"><br>
+    Last name: <input type="text" name="lastname">
+</form>
+
+<form name="input" action="/fweb" method="post">
+    Username: <input type="text" name="user">
+    <input type="submit" value="Submit">
+</form>
+
+<title>My Application</title>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}

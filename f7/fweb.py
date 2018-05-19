@@ -1,21 +1,27 @@
-from flask import Flask
-from flask import abort, redirect, url_for
-from ardlib import *
 import numpy as np
-from flask import render_template
+from flask import (Flask, abort, flash, redirect, render_template, request,
+                   url_for)
+
+from ardlib import *
+
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
-
-@app.route('/fweb')
-def fweb():
-    s=ard()
     
-    s.qfm()
+    return render_template('test.html')
+
+@app.route('/fweb',methods=['GET', 'POST'])
+def fweb():
+
+
+    if request.method == 'POST':
+        flash('dog')
+    # s=ard()
+    
+    # s.qfm()
     # abort(401)
-    return render_template('page_not_found.html'), 404
+    return "ok"
 
 if __name__ == '__main__':
     app.run(debug=True)
