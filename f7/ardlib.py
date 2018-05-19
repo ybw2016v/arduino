@@ -48,5 +48,8 @@ class ard(object):
         str = os.popen("echo takephoto"+timedog).read()
         print(str)
         pass
+    def test(self):
+        print("OK")
+        pass
 
     pass
