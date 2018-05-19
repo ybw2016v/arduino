@@ -27,5 +27,4 @@ class testlib(object):
         pass
     def test3(self):
         return self.nowTime
-        pass
     pass
