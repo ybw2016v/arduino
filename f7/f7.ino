@@ -27,8 +27,10 @@ void loop()
                 break;
             case 'q':
                 sf();
+                break;
             case 'l':
                 showlight();
+                break;
             default:
                 Serial.println("bad com");
                 break;

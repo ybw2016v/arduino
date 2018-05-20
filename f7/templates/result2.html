@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+全域扫描结果
+<ul>
+    {% for url in urls %}
+    <li>{{url}}</li><a href="/static/res2/{{url}}/res.html">{{url}}</a>
+    {% endfor %}
+</ul>

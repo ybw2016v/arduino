@@ -5,6 +5,8 @@ import datetime
 
 from ardlib import *
 from testlib import *
+import json
+import os
 
 app = Flask(__name__)
 
@@ -39,13 +41,41 @@ def test1():
         abort(403)
 
 @app.route('/test2',methods=['GET', 'POST'])
-def test2(parameter_list):
+def test2():
     if request.method == 'POST':
         s.tes2()
     else:
         abort(403)
     pass
 
+    
+@app.route('/real1',methods=['GET','POST'])
+def real1():
+    if request.method == 'POST':
+        a=ss.qfm()
+        return redirect(url_for('hello_world'))
+    else:
+        abort(403)
+
+@app.route('/real2',methods=['GET','POST'])
+def real2():
+    if request.method == 'POST':
+        a=ss.saomiao()
+        return redirect(url_for('hello_world'))
+    else:
+        abort(403)
+
+@app.route('/res1')
+def res1():
+    a=os.listdir('./static/res1/')
+    return render_template('result.html',urls=a)
+
+@app.route('/res2')
+def res2():
+    a=os.listdir('./static/res2/')
+    return render_template('result2.html',urls=a)
+
 if __name__ == '__main__':
     s=testlib()
-    app.run(debug=True)
+    ss=ard()
+    app.run(debug=True,host='0.0.0.0')

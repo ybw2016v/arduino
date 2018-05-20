@@ -1,5 +1,5 @@
 
-
+import time
 import datetime
 import os
 import shutil
@@ -16,8 +16,10 @@ class testlib(object):
         p2=os.path.join(p,'/static/res1/'+self.nowTime+r'/res1.html')
         # os.mkdir(os.path.join(p,'/static/res1/'+self.nowTime))
         b=os.popen('mkdir '+p+'/static/res1/'+self.nowTime)
+        time.sleep(0.001)
         a=os.popen('touch '+p+p2)
-        print(b,a)
+        print(b)
+        print(a)
         print(p+p2)
         with open(p+p2,'w') as f:
             f.write('dog\n'+self.nowTime)
