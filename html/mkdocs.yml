@@ -1,0 +1,8 @@
+site_name: Dogcraft
+repo_url: 'https://github.com/ybw2016v/pynotebook'
+edit_uri: ""
+repo_name: 'GitHub'
+pages:
+- Home: 'index.md'
+- my-notebook: 'frist.md'
+- 念诗: 'shi.md'

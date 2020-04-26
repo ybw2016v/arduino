@@ -1,2 +1,0 @@
-# arduino
-learn arduino
